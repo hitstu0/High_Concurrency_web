@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hitsz.high_concurrency.Mybatis.Base.UserBase">
+    <select id="getUserById" parameterType="Integer" resultType="user">
+       select id,mobile,name,password,salt
+       from User 
+       where id = #{id}
+    </select>
+    <select id="getUserByMobile" parameterType="Long" resultType="user">
+        select id,mobile,name password,salt
+        from User
+        where mobile = #{mobile}
+    </select>
+    <insert id="addUser" parameterType="user">
+        insert into User(mobile,name,password,salt)
+        values(#{mobile},#{name},#{password},#{salt})
+    </insert>
+</mapper>
