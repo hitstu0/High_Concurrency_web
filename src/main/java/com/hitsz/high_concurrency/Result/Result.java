@@ -2,11 +2,15 @@ package com.hitsz.high_concurrency.Result;
 
 //返回消息统一封装
 //泛型类，T 表示 msg 的类型
+
+import lombok.Data;
+
 /**
  * 分成Result和CodeMsg的原因
  * 1.解耦返回结果包装和信息
  * 
  */
+@Data
 public class Result<T> {
     private int code;
     private String msg;

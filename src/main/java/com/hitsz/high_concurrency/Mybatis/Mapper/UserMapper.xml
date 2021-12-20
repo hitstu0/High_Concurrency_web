@@ -9,7 +9,7 @@
        where id = #{id}
     </select>
     <select id="getUserByMobile" parameterType="Long" resultType="user">
-        select id,mobile,name password,salt
+        select id,mobile,name,password,salt
         from User
         where mobile = #{mobile}
     </select>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hitsz.high_concurrency.Mybatis.Base.GoodsBase">
+    <select id="getGoodsList" resultType="goods">
+        select id,name,price,store,image,details
+        from Goods
+    </select>    
+    <select id="getGoodsDetail" resultType="goodsDetail" parameterType="Integer">
+        select id,name,price,store,image,discription,maker
+        from GoodsDetail
+        where #{id} = id
+    </select>
+    <select id="getGoods" resultType="goods" parameterType="Integer">
+        select id,name,price,store,image,details
+        from Goods
+        where id = #{id}
+    </select>
+</mapper>
