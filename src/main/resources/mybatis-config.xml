@@ -27,6 +27,7 @@
     <mappers>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/UserMapper.xml"/>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/GoodsMapper.xml"/>
+        <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/OrderMapper.xml" />
     </mappers>
 
 </configuration>

@@ -11,5 +11,6 @@ public class MyExceptionHandler {
     @ExceptionHandler(value = ViewException.class)
     public Result<CodeMsg> viewExceptionHandler(ViewException e) {
         return Result.error(e.getCodeMsg());
+        
     }
 }

@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {   
-    @Autowired
-    private GoodsService goodsService;
-    
+   
     public Order setOrder(User user,OrderInfo info) {
         if(user == null) throw new ViewException(CodeMsg.NOT_LOGIN);              
         //下订单

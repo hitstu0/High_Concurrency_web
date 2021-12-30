@@ -30,5 +30,6 @@ public class RegisterController {
     //controller 返回的对象必须包含 get 和 set 方法
     public Result<CodeMsg> register(Model model,@Validated @RequestBody UserRegisterInfo user) {
         return registerService.register(user);
+        
     }
 }
