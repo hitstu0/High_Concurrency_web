@@ -5,11 +5,12 @@
 <configuration>
   
    <typeAliases>
-      <typeAlias alias="user" type="com.hitsz.high_concurrency.Data.User"/>   
+       <typeAlias alias="user" type="com.hitsz.high_concurrency.Data.User"/>   
        <typeAlias alias="goods" type="com.hitsz.high_concurrency.Data.Goods.Goods"/>
        <typeAlias alias="goodsDetail" type="com.hitsz.high_concurrency.Data.Goods.GoodsDetail"/>
        <typeAlias alias="orderInfo" type="com.hitsz.high_concurrency.Data.Order.OrderInfo"/>
    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -27,7 +28,7 @@
     <mappers>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/UserMapper.xml"/>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/GoodsMapper.xml"/>
-        <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/OrderMapper.xml" />
+        <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/OrderMapper.xml"/>
     </mappers>
 
 </configuration>

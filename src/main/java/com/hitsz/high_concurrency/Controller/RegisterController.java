@@ -1,4 +1,6 @@
-package com.hitsz.high_concurrency.Controller.Register;
+package com.hitsz.high_concurrency.Controller;
+
+
 
 import com.hitsz.high_concurrency.Data.Info.UserRegisterInfo;
 
@@ -12,19 +14,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
     @Autowired
     private RegisterService registerService;
+
     /**注册页面*/
     @GetMapping
-    public String registerPage() {        
+    public String registerPage() {      
         return "Register.html";
     }
+
+
     @PostMapping
     @ResponseBody
     //controller 返回的对象必须包含 get 和 set 方法

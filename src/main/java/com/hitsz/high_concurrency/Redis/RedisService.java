@@ -1,7 +1,7 @@
 package com.hitsz.high_concurrency.Redis;
 
 import com.alibaba.fastjson.JSON;
-import com.hitsz.high_concurrency.Redis.Key.UserKey;
+
 import com.hitsz.high_concurrency.Redis.prefix.prefix;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

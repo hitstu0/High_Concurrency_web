@@ -1,4 +1,4 @@
-package com.hitsz.high_concurrency.Controller.Register;
+package com.hitsz.high_concurrency.Controller;
 
 import com.hitsz.high_concurrency.Data.Goods.GoodsDetail;
 import com.hitsz.high_concurrency.Exeception.Base.ViewException;
@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("/goodsDetail")
+@Controller
+@RequestMapping("/goodsDetail")
 public class GoodsDetailController {
     @Autowired
     private GoodsService goodsService;

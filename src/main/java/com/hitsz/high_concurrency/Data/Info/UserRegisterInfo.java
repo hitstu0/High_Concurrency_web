@@ -1,8 +1,7 @@
 package com.hitsz.high_concurrency.Data.Info;
 
-import com.hitsz.high_concurrency.Validator.isMobile;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
+
 
 import javax.validation.constraints.NotBlank;
 @Data

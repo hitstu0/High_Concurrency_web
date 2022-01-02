@@ -13,14 +13,13 @@ import com.hitsz.high_concurrency.Util.FinalValue;
 import com.hitsz.high_concurrency.Util.MD5Util;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
+
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.net.http.HttpResponse;
+
 
 @Service
 public class LoginService {

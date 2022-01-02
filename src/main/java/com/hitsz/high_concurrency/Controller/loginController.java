@@ -1,4 +1,4 @@
-package com.hitsz.high_concurrency.Controller.Register;
+package com.hitsz.high_concurrency.Controller;
 
 import com.hitsz.high_concurrency.Data.Info.UserLoginInfo;
 import com.hitsz.high_concurrency.Data.User;
