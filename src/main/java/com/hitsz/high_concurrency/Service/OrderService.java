@@ -9,9 +9,9 @@ import com.hitsz.high_concurrency.Mybatis.Base.GoodsBase;
 import com.hitsz.high_concurrency.Mybatis.Base.OrderBase;
 import com.hitsz.high_concurrency.Mybatis.MabatisUtil;
 import com.hitsz.high_concurrency.Result.CodeMsg;
-import com.zaxxer.hikari.metrics.dropwizard.CodahaleHealthChecker;
+
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 @Service

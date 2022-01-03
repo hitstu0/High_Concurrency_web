@@ -6,7 +6,7 @@ import com.hitsz.high_concurrency.Data.User;
 import com.hitsz.high_concurrency.Exeception.Base.ViewException;
 import com.hitsz.high_concurrency.Mybatis.Base.UserBase;
 import com.hitsz.high_concurrency.Mybatis.MabatisUtil;
-import com.hitsz.high_concurrency.Redis.RedisService;
+
 import com.hitsz.high_concurrency.Result.CodeMsg;
 import com.hitsz.high_concurrency.Result.Result;
 import com.hitsz.high_concurrency.Util.MD5Util;
