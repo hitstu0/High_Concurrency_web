@@ -1,6 +1,7 @@
 package com.hitsz.high_concurrency.Controller;
 
 import com.hitsz.high_concurrency.Data.Info.UserLoginInfo;
+import com.alibaba.fastjson.JSON;
 import com.hitsz.high_concurrency.Data.User;
 import com.hitsz.high_concurrency.Result.CodeMsg;
 import com.hitsz.high_concurrency.Result.Result;
@@ -27,6 +28,7 @@ public class loginController {
     @PostMapping
     @ResponseBody
     public Result<CodeMsg> doLogin(HttpServletResponse response, @Validated @RequestBody UserLoginInfo info) {
+        System.out.println(JSON.toJSON(info));
         return loginService.doLogin(response,info);
     }
     @UserIdentify

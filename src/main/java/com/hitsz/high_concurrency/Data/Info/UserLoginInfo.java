@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class UserLoginInfo {
-    @isMobile
+    //@isMobile
     @NotBlank(message = "手机号不能为空")
     private String mobile;
     @NotBlank(message = "密码不能为空")

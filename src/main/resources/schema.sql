@@ -1,7 +1,7 @@
-DROP table User;
-DROP table Goods;
-DROP table Order;
-DROP table GoodsDetail;
+truncate table User;
+truncate table Goods;
+truncate table Order;
+truncate table GoodsDetail;
 create table  if not exists User(
     id int not null auto_increment primary key,
     mobile bigint not null,

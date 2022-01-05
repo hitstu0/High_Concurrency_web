@@ -33,6 +33,7 @@ public class RegisterService {
             u.setPassword(dpPass);
             u.setSalt(salt);
             userBase.addUser(u);
+            System.out.println(user.getName());
             sqlSession.commit();           
         } catch (Exception e) {
             e.printStackTrace();
