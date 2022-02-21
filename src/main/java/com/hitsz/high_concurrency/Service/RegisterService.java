@@ -13,9 +13,11 @@ import com.hitsz.high_concurrency.Util.MD5Util;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import redis.clients.jedis.exceptions.JedisConnectionException;
+
 @Service
 public class RegisterService {    
-    public Result<CodeMsg> register(UserRegisterInfo user) {
+    public Result<CodeMsg> register(UserRegisterInfo user) throws ViewException,JedisConnectionException{
         //验证用户是否存在
         SqlSession sqlSession = MabatisUtil.getSqlSession();
         try {
@@ -28,15 +30,12 @@ public class RegisterService {
            String dpPass = MD5Util.getDBPassword(vuePass,salt);
            //存入数据库
             User u = new User();
-            u.setMobile(Long.parseLong(user.getMobile()));
+            u.setMobile(Long.parseLong(user.getMobile()));      
             u.setName(user.getName());
             u.setPassword(dpPass);
             u.setSalt(salt);
-            userBase.addUser(u);
-            System.out.println(user.getName());
+            userBase.addUser(u);          
             sqlSession.commit();           
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             //即使 try 块中有返回语句，在返回前也会执行 finally 块
             sqlSession.close();

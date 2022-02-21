@@ -27,8 +27,7 @@ public class loginController {
     }
     @PostMapping
     @ResponseBody
-    public Result<CodeMsg> doLogin(HttpServletResponse response, @Validated @RequestBody UserLoginInfo info) {
-        System.out.println(JSON.toJSON(info));
+    public Result<CodeMsg> doLogin(HttpServletResponse response, @Validated @RequestBody UserLoginInfo info) throws Exception {        
         return loginService.doLogin(response,info);
     }
     @UserIdentify

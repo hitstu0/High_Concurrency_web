@@ -4,7 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hitsz.high_concurrency.Mybatis.Base.OrderBase">
     <insert id="addOrder" parameterType="orderInfo">
-        insert into Order(userId,goodsId,nums)
-        values (#{userId},#{goodsId},#{nums})
+        insert into MyOrder(userId,goodsId,nums,payed)
+        values (#{userId},#{goodsId},#{nums},#{payed})
     </insert>    
+    <update id="payOder" parameterType="Integer">
+        update MyOrder
+        set payed = true
+        where id = #{id}
+    </update>
+    <delete id="examOrder" parameterType="Integer">
+        delete from MyOrder
+        where id = #{id} and payed = false
+    </delete>
 </mapper>

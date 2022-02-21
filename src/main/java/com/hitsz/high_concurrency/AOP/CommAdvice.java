@@ -26,7 +26,8 @@ public class CommAdvice {
     
     @Around("CommonPoinCut.identifyUser()")
     /**由于使用around，所以方法返回值因由该方法抛出*/
-    public Object identifyUser(ProceedingJoinPoint joinPoint) {
+    public Object identifyUser(ProceedingJoinPoint joinPoint) throws Throwable {
+        
         Object[] args = joinPoint.getArgs();
         int user = -1; int httpSerRequest = -1;
         for(int i = 0 ; i < args.length ; ++ i) {            
@@ -37,12 +38,8 @@ public class CommAdvice {
             throw new IllegalArgumentException("注解添加错误：登陆验证信息缺失");
         }
         HttpServletRequest request = (RequestFacade)args[httpSerRequest];
-        args[user] = loginService.getUserByRequest(request);
-        try {           
-            return joinPoint.proceed(args);
-        } catch (Throwable e) {            
-            e.printStackTrace();
-        }
-        return null;
+        args[user] = loginService.getUserByRequest(request);              
+        return joinPoint.proceed(args);
+        
     }
 }

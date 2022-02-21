@@ -9,6 +9,7 @@
        <typeAlias alias="goods" type="com.hitsz.high_concurrency.Data.Goods.Goods"/>
        <typeAlias alias="goodsDetail" type="com.hitsz.high_concurrency.Data.Goods.GoodsDetail"/>
        <typeAlias alias="orderInfo" type="com.hitsz.high_concurrency.Data.Order.OrderInfo"/>
+       <typeAlias alias="miaosha" type="com.hitsz.high_concurrency.Data.Goods.MiaoShaInfo" />
    </typeAliases>
 
     <environments default="development">
@@ -29,6 +30,7 @@
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/UserMapper.xml"/>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/GoodsMapper.xml"/>
         <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/OrderMapper.xml"/>
+        <mapper resource="com/hitsz/high_concurrency/Mybatis/Mapper/MiaoShaMapper.xml"/>
     </mappers>
 
 </configuration>

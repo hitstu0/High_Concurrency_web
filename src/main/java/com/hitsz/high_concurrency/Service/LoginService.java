@@ -4,9 +4,11 @@ import com.hitsz.high_concurrency.Data.Info.UserLoginInfo;
 import com.hitsz.high_concurrency.Data.User;
 import com.hitsz.high_concurrency.Exeception.Base.ViewException;
 import com.hitsz.high_concurrency.Mybatis.Base.UserBase;
-import com.hitsz.high_concurrency.Mybatis.MabatisUtil;
+import com.hitsz.high_concurrency.Redis.RedisCommondFactory;
+import com.hitsz.high_concurrency.Redis.Commond.RedisCommond;
 import com.hitsz.high_concurrency.Redis.Key.UserKey;
-import com.hitsz.high_concurrency.Redis.RedisService;
+import com.hitsz.high_concurrency.Redis.RedisServer.RedisService;
+import com.hitsz.high_concurrency.Mybatis.MabatisUtil;
 import com.hitsz.high_concurrency.Result.CodeMsg;
 import com.hitsz.high_concurrency.Result.Result;
 import com.hitsz.high_concurrency.Util.FinalValue;
@@ -16,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -25,27 +27,27 @@ import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class LoginService {
-    @Autowired
-    private RedisService redisService;
     
-    public User getUserByToken(String token) {
+    private ConcurrentHashMap<String,User> map = new ConcurrentHashMap<>(2000);
+
+    public User getUserByToken(String token) throws Exception {
        if(token == null || token.length() == 0) return null;
-       return redisService.get(UserKey.Login,token,User.class);
+       return map.get(token);
     }
-    public User getUserByRequest(HttpServletRequest request) {
+    public User getUserByRequest(HttpServletRequest request) throws Exception {
         Cookie[] cookies = request.getCookies();
+        if(cookies == null) return null;
         String token = null;
         for(Cookie c : cookies) {
             if(c.getName().equals(FinalValue.tokenName)) {
                 token = c.getValue();
                 break;
             }            
-        }
-    
+        }    
         return getUserByToken(token);
     }
     
-    public Result<CodeMsg> doLogin(HttpServletResponse response, UserLoginInfo info) {
+    public Result<CodeMsg> doLogin(HttpServletResponse response, UserLoginInfo info) throws Exception {
         //验证用户
         SqlSession session = MabatisUtil.getSqlSession();
         User user = null;
@@ -53,8 +55,6 @@ public class LoginService {
             UserBase uBase = session.getMapper(UserBase.class);           
             user = uBase.getUserByMobile(Long.parseLong(info.getMobile()));
             if(user == null) throw new ViewException(CodeMsg.USER_NOT_EXISTS);
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -65,7 +65,7 @@ public class LoginService {
         String token = MD5Util.getToken(user.getMobile() + "",user.getPassword());
         Cookie cookie = new Cookie(FinalValue.tokenName,token); 
         response.addCookie(cookie);
-        redisService.set(UserKey.Login,token,user);
+        map.put(token,user);
         return Result.success(CodeMsg.SUCCESS);
     }
 }

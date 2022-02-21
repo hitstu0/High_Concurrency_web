@@ -8,4 +8,10 @@ public class OrderInfo {
     private int goodsId;
     private int userId;
     private int nums;
+    private boolean payed;
+
+    @Override
+    public String toString() {
+        return id + " " + goodsId + " " + userId + " " + nums;
+    }
 }
